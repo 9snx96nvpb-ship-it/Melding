@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrtopedRomsdal AS – Melding</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, #f9f9f9, #d4fc79);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding-top: 50px;
+    }
+
+    .container {
+        background: white;
+        padding: 30px 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        color: #1e3c72;
+        margin-bottom: 25px;
+    }
+
+    .nurse-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nurse {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: background 0.3s;
+        background: #fff;
+    }
+
+    .nurse:hover {
+        background: #f0f8ff;
+    }
+
+    .nurse-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nurse img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #1e90ff;
+    }
+
+    .nurse span {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .messageBox {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .messageBox textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        min-height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .messageBox button {
+        background: linear-gradient(45deg, #1e90ff, #00c6ff);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .messageBox button:hover {
+        background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+
+    .log {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f0f8ff;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .log p {
+        margin: 5px 0;
+        font-size: 14px;
+        padding: 5px;
+        border-bottom: 1px dashed #ccc;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>OrtopedRomsdal AS – Melding</h1>
+
+    <div class="nurse-list">
+        <div class="nurse" id="nurse1">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox1')">
+                <img src="https://sunndallegesenter.no/wp-content/uploads/sites/154/2022/04/lege_mann-400x500.jpg" alt="Profilbilde">
+                <span>Jan-Ole Johansen (Privatlege, Overlege)</span>
+            </div>
+            <div class="messageBox" id="messageBox1">
+                <textarea id="textarea1" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse1')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse1"></div>
+        </div>
+
+        <div class="nurse" id="nurse2">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox2')">
+                <img src="https://sunndallegesenter.no/wp-content/uploads/sites/154/2022/04/lege_mann-400x500.jpg" alt="Profilbilde">
+                <span>Alexander Nygaard Sæter (Radiolog)</span>
+            </div>
+            <div class="messageBox" id="messageBox2">
+                <textarea id="textarea2" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse2')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse2"></div>
+        </div>
+
+        <div class="nurse" id="nurse3">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox3')">
+                <img src="https://media.istockphoto.com/id/1467477321/vector/nurse-avatar-clipart-icon-vector-illustration-medical-service.jpg?s=612x612&w=0&k=20&c=K9MD045OR7YUefUF7ABPOyRsCBSW8Oh8417Jgxd1vEM=" alt="Profilbilde">
+                <span>Anne Kristin Haugland (Radiolog)</span>
+            </div>
+            <div class="messageBox" id="messageBox3">
+                <textarea id="textarea3" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse3')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse3"></div>
+        </div>
+
+        <div class="nurse" id="nurse4">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox4')">
+                <img src="https://media.istockphoto.com/id/1467477321/vector/nurse-avatar-clipart-icon-vector-illustration-medical-service.jpg?s=612x612&w=0&k=20&c=K9MD045OR7YUefUF7ABPOyRsCBSW8Oh8417Jgxd1vEM=" alt="Profilbilde">
+                <span>Maria Hansen (Sykepleier)</span>
+            </div>
+            <div class="messageBox" id="messageBox4">
+                <textarea id="textarea4" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse4')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse4"></div>
+        </div>
+
+        <div class="nurse" id="nurse5">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox5')">
+                <img src="https://sunndallegesenter.no/wp-content/uploads/sites/154/2022/04/lege_mann-400x500.jpg" alt="Profilbilde">
+                <span>Jonas Berg (Sykepleier)</span>
+            </div>
+            <div class="messageBox" id="messageBox5">
+                <textarea id="textarea5" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse5')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse5"></div>
+        </div>
+
+        <div class="nurse" id="nurse6">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox6')">
+                <img src="https://sunndallegesenter.no/wp-content/uploads/sites/154/2022/04/lege_mann-400x500.jpg" alt="Profilbilde">
+                <span>Karl Henrik (Sykepleier)</span>
+            </div>
+            <div class="messageBox" id="messageBox6">
+                <textarea id="textarea6" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse6')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse6"></div>
+        </div>
+
+        <div class="nurse" id="nurse7">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox7')">
+                <img src="https://media.istockphoto.com/id/1467477321/vector/nurse-avatar-clipart-icon-vector-illustration-medical-service.jpg?s=612x612&w=0&k=20&c=K9MD045OR7YUefUF7ABPOyRsCBSW8Oh8417Jgxd1vEM=" alt="Profilbilde">
+                <span>Bilsan Arkan Osman (Sykepleier)</span>
+            </div>
+            <div class="messageBox" id="messageBox7">
+                <textarea id="textarea7" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse7')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse7"></div>
+        </div>
+
+        <div class="nurse" id="nurse8">
+            <div class="nurse-header" onclick="toggleMessageBox('messageBox8')">
+                <img src="https://sunndallegesenter.no/wp-content/uploads/sites/154/2022/04/lege_mann-400x500.jpg"alt="profilbildet">
+                <span>Ahmed Sultan (Assistent)</span>
+            </div>
+            <div class="messageBox" id="messageBox8">
+                <textarea id="textarea8" placeholder="Skriv melding her..."></textarea>
+                <button onclick="sendMessage('nurse8')">Send melding</button>
+            </div>
+            <div class="log" id="log-nurse8"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleMessageBox(boxId) {
+    const box = document.getElementById(boxId);
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendMessage(nurseId) {
+    const textarea = document.getElementById('textarea' + nurseId.replace('nurse',''));
+    const message = textarea.value.trim();
+    if(!message) {
+        alert('Skriv en melding først!');
+        return;
+    }
+
+    const log = document.getElementById('log-' + nurseId);
+    const p = document.createElement('p');
+    const now = new Date();
+    const time = now.toLocaleTimeString('no-NO', {hour: '2-digit', minute:'2-digit'});
+    p.innerText = `[${time}] ${message}`;
+    log.appendChild(p);
+
+    textarea.value = '';
+    log.scrollTop = log.scrollHeight;
+}
+</script>
+
+</body>
+</html>
